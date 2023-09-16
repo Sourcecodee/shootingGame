@@ -198,6 +198,7 @@ input[name=search]{
     margin: 20px;
     padding: 12px;
     font-size: 1.05rem;
+    overflow: hidden;
 }
 
 .card2{
@@ -213,6 +214,7 @@ input[name=search]{
     margin: 20px;
     padding: 12px;
     font-size: 1.05rem;
+    overflow: hidden;
 }
 
 .card:hover{

@@ -9,6 +9,8 @@ const searchBox = document.querySelector('#searchBox')
 const searchI = document.querySelector('#searchI')
 const url = 'https://api.themoviedb.org/3/discover/movie?api_key=a2f9167784a7eccf1191ea866d2884ae&page=1';
 
+
+
 // code to open and close the movies drropdown menu
 const displayL = (event) =>{
     if(!event.target.matches('.movies')){
@@ -122,6 +124,4 @@ function getter(){
 }
 
 searchI.addEventListener('click', getter)
-
-
 
