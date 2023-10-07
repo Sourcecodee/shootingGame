@@ -20,15 +20,15 @@ var projectile = []
 let count=0;
 var gameOver=false;
 
+// setting the canva width and height
 canva.width = maxW;
 canva.height = maxH;
 
 
 window.onload = function render(){
-    // update()
+    // if boss array is empty push new enemy
     for(let i=0; i <30; i++){
         let unEqual = new Enemy()
-        console.log(unEqual.minionX, unEqual.minionY)
         if(boss.length===0){
             boss.push(unEqual)
         }
@@ -49,7 +49,7 @@ window.onload = function render(){
     window.addEventListener('keydown', move)
 }
 
-
+// move player left and right
 function move(e){
     if(e.keyCode==39 && playerX!==maxW-20){
         speedX=1
@@ -66,6 +66,7 @@ function move(e){
     update()
 }
 
+// shoot bullets with space key
 function kill(e){
     if(e.keyCode==32){
         speedBx=0;
@@ -77,6 +78,7 @@ function kill(e){
     }
 }
 
+// update function for player movement
 function update(){
     can.clearRect(0, 0, maxW, maxH)
 
@@ -90,6 +92,7 @@ function update(){
     can.fillRect(playerX, playerY, blocksize, blocksize);
 }
 
+// template to create multiple instance of enemies
 class Enemy{
     constructor(){
         this.minionX = Math.floor(Math.random()*cols)*blocksize;
@@ -98,6 +101,7 @@ class Enemy{
         this.speedEy=speedEy+0.2;
     }
 
+    // update function for enemies
     updateE(){
         this.minionX+=this.speedEx;
         this.minionY+=this.speedEy; 
@@ -116,6 +120,7 @@ class Enemy{
     }
 }
 
+// template to create multiple instance of bullet
 class Bullet{
     constructor(BulletX, BulletY, speedBx, speedBy){
         this.BulletX=BulletX;
@@ -124,6 +129,7 @@ class Bullet{
         this.speedBy=speedBy;
     }
 
+    // update method for bullet
     updateB(){
         this.BulletX+=this.speedBx;
         this.BulletY+=this.speedBy*10;
@@ -145,20 +151,22 @@ class Bullet{
 
         // The bullet is too fast console log to see, its why it wasn't equaling the enemy
 
+        // 
         for(let i=0; i<boss.length; i++){
             if(this.BulletX-boss[i].minionX===0 && this.BulletY-boss[i].minionY<blocksize){
                 console.log('sucess')
                 count+=2
                 counter.innerHTML=count;
-                // console.log(this.BulletX, this.BulletY, boss[i].minionX, boss[i].minionY)
+                // remove enemy when bullet touches it
                 boss.splice(i, 1)
+                // remove bullets when it touches an enemy
                 for(let g=0; g<projectile.length; g++){
                     projectile.splice(g, 1)
                 }
             }    
-            // console.log(this.BulletX, bY)
         }
 
+        // remove bullets when it reaches -20
         for(let j=0; j<projectile.length; j++){
             if(projectile[j].BulletY==-20){
                 projectile.splice(j, 1)
@@ -167,6 +175,7 @@ class Bullet{
     }
 }
 
+// animate function to keep updating canvas
 function animate(){
     can.fillStyle='orange';
     can.fillRect(0, 0, maxW, maxH);
