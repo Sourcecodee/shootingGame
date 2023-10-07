@@ -151,7 +151,6 @@ class Bullet{
 
         // The bullet is too fast console log to see, its why it wasn't equaling the enemy
 
-        // 
         for(let i=0; i<boss.length; i++){
             if(this.BulletX-boss[i].minionX===0 && this.BulletY-boss[i].minionY<blocksize){
                 console.log('sucess')
