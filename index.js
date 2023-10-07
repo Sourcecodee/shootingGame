@@ -20,7 +20,7 @@ var projectile = []
 let count=0;
 var gameOver=false;
 
-// setting the canva width and height
+// setting the canvas width and height
 canva.width = maxW;
 canva.height = maxH;
 
