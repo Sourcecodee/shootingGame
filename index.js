@@ -98,7 +98,7 @@ class Enemy{
         this.minionX = Math.floor(Math.random()*cols)*blocksize;
         this.minionY = Math.floor(Math.random()*rows/3)*blocksize;
         this.speedEx=speedEx;
-        this.speedEy=speedEy+0.2;
+        this.speedEy=speedEy+0.15;
     }
 
     // update function for enemies
