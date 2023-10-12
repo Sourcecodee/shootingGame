@@ -44,7 +44,7 @@ h2{
     display: flex;
     justify-content: center;
     align-items: center;
-    color: chocolate;
+    color: brown;
     height: 100%;
 }
 
@@ -80,8 +80,8 @@ h2{
     position: absolute;
     list-style-type: none;
     font-size: 1rem;
-    background-color: #8c8c8c;
-    color: #1a1a1a;
+    background-color: transparent;
+    color: white;
     text-align: center;
     border-radius: 3px;
 }
@@ -96,7 +96,9 @@ h2{
 
 .movie li:hover{
     cursor: pointer;
-    border-bottom: 1px solid white;
+    background-color: transparent;
+    border-bottom: 2px solid white;
+    border-radius: 0;
 }
 
 .search{
