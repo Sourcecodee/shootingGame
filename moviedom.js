@@ -70,7 +70,7 @@ function content(url){
 }
 
 //pagination callback
-// function that accepts a api then sends back data
+// function that accepts a api then sends back json data
 const page = (url)=>{
     // clear the div then display new data
     mov.innerHTML=''
