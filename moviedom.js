@@ -2,6 +2,7 @@
 const movies = document.querySelector('.movies');
 const movie = document.querySelector('.movie');
 const mov = document.querySelector('.mov')
+const moviePanel = document.querySelector('.movie-panel')
 const first = document.querySelector('.first')
 const second = document.querySelector('.second')
 const third = document.querySelector('.third')
@@ -61,6 +62,7 @@ function content(url){
                 para.appendChild(logo)
                 para.appendChild(elem)
                 mov.appendChild(para)
+                moviePanel.style.height='auto';
                 // console.log(para)
             });
         }
@@ -114,6 +116,7 @@ function getter(){
             para.appendChild(elem)
             mov.appendChild(para)
             console.log(title)
+            moviePanel.style.height='auto';
             }
         )
     })
