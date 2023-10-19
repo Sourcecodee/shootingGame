@@ -70,6 +70,7 @@ function content(url){
     xhr.send();
 }
 
+
 //pagination callback
 // function that accepts an api then sends back json data
 const page = (url)=>{
