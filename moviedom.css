@@ -130,6 +130,7 @@ input[name=search]{
     border-radius: 10px;
     padding: 8px;
     height: 50%;
+    background-color: rgb(212, 205, 205);
     outline: none;
 }
 
