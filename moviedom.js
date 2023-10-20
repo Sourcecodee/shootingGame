@@ -9,7 +9,7 @@ const third = document.querySelector('.third')
 const searchBox = document.querySelector('#searchBox')
 const searchI = document.querySelector('#searchI')
 const url = 'https://api.themoviedb.org/3/discover/movie?api_key=a2f9167784a7eccf1191ea866d2884ae&page=1';
-let movieArray=[]
+const pagination = document.querySelector('.pagination')
 
 // code to open and close the movies drropdown menu
 const displayL = (event) =>{
@@ -33,7 +33,6 @@ function content(url){
     let obj;
     let van;
     let film;
-    const finder= 'https://api.themoviedb.org/3/find/external_id?external_source=api_key=a2f9167784a7eccf1191ea866d2884ae&query='
 
     const xhr = new XMLHttpRequest();
 
@@ -67,23 +66,36 @@ function content(url){
                 elem.appendChild(title)
                 para.appendChild(logo)
                 para.appendChild(elem)
-                para.addEventListener('click',()=> {
-                    fetch(`${finder}${id}`)
+                para.addEventListener('click',()=> {     
+                    //some styles can only be applied with javascript   
+                    mov.innerHTML= ''
+                    mov.style.alignItems= 'center'
+                    mov.style.justifyContent= 'start'
+                    moviePanel.style.height='85vh'
+                    pagination.style.display='none'
+                    fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=a2f9167784a7eccf1191ea866d2884ae`)
                     .then( (res) => res.json())
-                    .then((data)=>console.log(data))
+                    .then((data)=>{
+                        const{poster_path: moviePic, overview: overview, original_title: movieTitle, genres: genres}=data
+                        const parent = document.createElement('div')
+                        parent.setAttribute('class', 'card3')
+                        const poster = document.createElement('img')
+                        poster.setAttribute('src', `https://image.tmdb.org/t/p/w400${moviePic}`)
+                        parent.appendChild(poster)
+                        mov.appendChild(parent)
+                    })
                 })
                 mov.appendChild(para)
                 moviePanel.style.height='auto';
                 console.log(para)
-                movieArray.push(para)
+                // movieArray.push(para)
                 // movieArray.forEach((value)=>{
                 //     // const fromMovie = value.childNodes[0].innerHTML
                 //     console.log(value.childNodes)
                 //     // value.addEventListener('click', getMovie)
                 //     // return fromMovie
                 // })
-
-                console.log(movieArray)
+                // console.log(movieArray)
             });
         }
         else console.log('err');
@@ -119,6 +131,7 @@ function getter(){
 
     // clear the div then display new data
     mov.innerHTML=''
+    moviePanel.style.height='75vh'
     fetch(`https://api.themoviedb.org/3/search/movie?api_key=a2f9167784a7eccf1191ea866d2884ae&query=${searchT}`)
     .then((res)=> parsedResult=res.json())
     .then((parsedResult)=>{
