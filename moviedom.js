@@ -33,6 +33,7 @@ function content(url){
     let obj;
     let van;
     let film;
+    const finder= 'https://api.themoviedb.org/3/find/external_id?external_source=api_key=a2f9167784a7eccf1191ea866d2884ae&query='
 
     const xhr = new XMLHttpRequest();
 
@@ -66,13 +67,22 @@ function content(url){
                 elem.appendChild(title)
                 para.appendChild(logo)
                 para.appendChild(elem)
+                para.addEventListener('click',()=> {
+                    fetch(`${finder}${id}`)
+                    .then( (res) => res.json())
+                    .then((data)=>console.log(data))
+                })
                 mov.appendChild(para)
                 moviePanel.style.height='auto';
                 console.log(para)
                 movieArray.push(para)
-                movieArray.forEach((value)=>{
-                    value.addEventListener('click', getMovie)
-                })
+                // movieArray.forEach((value)=>{
+                //     // const fromMovie = value.childNodes[0].innerHTML
+                //     console.log(value.childNodes)
+                //     // value.addEventListener('click', getMovie)
+                //     // return fromMovie
+                // })
+
                 console.log(movieArray)
             });
         }
@@ -81,8 +91,8 @@ function content(url){
     xhr.send();
 }
 
-function getMovie(oops){
-    console.log('Success', oops)
+function getMovie(){
+    console.log('Success')
 }
 
 
@@ -142,4 +152,3 @@ function getter(){
 }
 
 searchI.addEventListener('click', getter)
-
