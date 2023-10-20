@@ -76,6 +76,7 @@ function content(url){
                     fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=a2f9167784a7eccf1191ea866d2884ae`)
                     .then( (res) => res.json())
                     .then((data)=>{
+                        console.log(data)
                         const{poster_path: moviePic, overview: overview, original_title: movieTitle, genres: genres}=data
                         const parent = document.createElement('div')
                         parent.setAttribute('class', 'card3')
