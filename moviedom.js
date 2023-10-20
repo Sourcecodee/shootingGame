@@ -9,7 +9,7 @@ const third = document.querySelector('.third')
 const searchBox = document.querySelector('#searchBox')
 const searchI = document.querySelector('#searchI')
 const url = 'https://api.themoviedb.org/3/discover/movie?api_key=a2f9167784a7eccf1191ea866d2884ae&page=1';
-
+let movieArray=[]
 
 // code to open and close the movies drropdown menu
 const displayL = (event) =>{
@@ -42,12 +42,16 @@ function content(url){
             obj = this.responseText;
             van = JSON.parse(obj)
             film = van.results
-            // console.log(film)
+            console.log(film)
             film.forEach(item => {
                 // console.log(item.title)
                 const title = document.createTextNode(item.title)
                 const elem = document.createElement('p')
                 const para = document.createElement('div')
+                const movieId= document.createElement('p')
+                const id = item.id
+                movieId.innerHTML = id
+                // console.log(id)
                 para.setAttribute('class', 'card') 
                 const logo = document.createElement('img')
                 if(item.poster_path){
@@ -56,18 +60,29 @@ function content(url){
                 else{
                 logo.setAttribute('src', `https://via.placeholder.com/400`)
                 }
-                console.log(logo)
+                // console.log(logo)
+                para.appendChild(movieId)
+                movieId.style.display='none'
                 elem.appendChild(title)
                 para.appendChild(logo)
                 para.appendChild(elem)
                 mov.appendChild(para)
                 moviePanel.style.height='auto';
-                // console.log(para)
+                console.log(para)
+                movieArray.push(para)
+                movieArray.forEach((value)=>{
+                    value.addEventListener('click', getMovie)
+                })
+                console.log(movieArray)
             });
         }
         else console.log('err');
     }
     xhr.send();
+}
+
+function getMovie(oops){
+    console.log('Success', oops)
 }
 
 
