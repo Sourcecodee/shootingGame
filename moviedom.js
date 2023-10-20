@@ -88,14 +88,6 @@ function content(url){
                 mov.appendChild(para)
                 moviePanel.style.height='auto';
                 console.log(para)
-                // movieArray.push(para)
-                // movieArray.forEach((value)=>{
-                //     // const fromMovie = value.childNodes[0].innerHTML
-                //     console.log(value.childNodes)
-                //     // value.addEventListener('click', getMovie)
-                //     // return fromMovie
-                // })
-                // console.log(movieArray)
             });
         }
         else console.log('err');
@@ -113,6 +105,7 @@ function getMovie(){
 const page = (url)=>{
     // clear the div then display new data
     mov.innerHTML=''
+    moviePanel.style.height='85vh'
     console.log('yes')
     content(url)
 }

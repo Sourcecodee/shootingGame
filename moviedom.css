@@ -89,13 +89,17 @@ h2{
     border-radius: 3px;
 }
 
+.movie li{
+    background-color: #0c0c0c;
+    color: white;
+}
+
 .show{
     display: block;
 }
 
 .movie li:hover{
     cursor: pointer;
-    background-color: transparent;
     border-bottom: 2px solid white;
     border-radius: 0;
 }
@@ -262,7 +266,7 @@ input[name=search]{
 
 .card p:hover{
     cursor: pointer;
-    color: rgb(153, 152, 152);
+    color: black;
 }
 
 .card img:hover{
