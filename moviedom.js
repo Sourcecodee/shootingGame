@@ -70,6 +70,8 @@ function content(url){
                     //some styles can only be applied with javascript   
                     mov.innerHTML= ''
                     mov.style.alignItems= 'center'
+                    mov.style.flexDirection= 'row'
+                    mov.style.flexWrap= 'nowrap'
                     mov.style.justifyContent= 'start'
                     moviePanel.style.height='85vh'
                     pagination.style.display='none'
@@ -77,13 +79,26 @@ function content(url){
                     .then( (res) => res.json())
                     .then((data)=>{
                         console.log(data)
-                        const{poster_path: moviePic, overview: overview, original_title: movieTitle, genres: genres}=data
+                        const{poster_path: moviePic, overview: overview, original_title: movieTitle, genres: genre}=data
                         const parent = document.createElement('div')
                         parent.setAttribute('class', 'card3')
                         const poster = document.createElement('img')
                         poster.setAttribute('src', `https://image.tmdb.org/t/p/w400${moviePic}`)
+                        const secondDiv = document.createElement('div')
+                        secondDiv.setAttribute('class', 'secondDiv')
+                        const sTitle = document.createElement('h2')
+                        sTitle.innerHTML=movieTitle
+                        const info = document.createElement('p')
+                        const genres = document.createElement('p')
+                        // genre.innerHTML=genre
+                        console.log(genre)
+                        info.innerHTML=overview
+                        secondDiv.appendChild(sTitle)
+                        secondDiv.appendChild(info)
+                        secondDiv.appendChild(genres)
                         parent.appendChild(poster)
                         mov.appendChild(parent)
+                        mov.appendChild(secondDiv)
                     })
                 })
                 mov.appendChild(para)

@@ -203,6 +203,10 @@ input[name=search]{
     justify-content: space-around;
 }
 
+p{
+    word-wrap: break-word;
+}
+
 .card{
     display: flex;
     flex-direction: column;
@@ -277,6 +281,26 @@ input[name=search]{
     width: 100%;
     height: 90%;
     border-radius: 15px;
+}
+
+.secondDiv{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    font-style: normal;
+    width: 45%;
+    height: 100%;
+    margin-left: 10%;
+    padding: 40px;
+    font-size: 1.04rem;
+}
+
+.secondDiv h2{
+    height: auto;
+    margin: 10px 0;
+    font-size: larger;
+    font-weight: 800;
 }
 
 @media(max-width: 500px){
